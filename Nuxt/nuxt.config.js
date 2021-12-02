@@ -40,10 +40,40 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
+    '@nuxtjs/proxy',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: "http://127.0.0.1:8000/",
+    credentials: true,
+    proxy: true,
+  },
+
+  auth: {
+    redirect: {
+      login: '/login',
+      logout: '/',
+      callback: false,
+      home: '/',
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: {url: '/api/auth/login', method: 'post', porpertyName: false},
+          user: {url: '/api/user', method: 'get', propetyName: false},
+          logout: false
+        },
+        tokenRequired: false,
+        tokenType: false,
+      }
+    },
+    localStorage: false,
+  },
+  router: {
+    middleware:['auth']
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
