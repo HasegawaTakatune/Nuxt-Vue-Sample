@@ -1,10 +1,21 @@
 export default {
+  mode: 'spa',
+
+  server: {
+    port: 3000,
+    host: '0.0.0.0'
+  },
+
+  router: {
+    base: '/nuxt/'
+  },
+
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Nuxt',
+    title: 'nuxt',
     htmlAttrs: {
       lang: 'en'
     },
@@ -40,39 +51,11 @@ export default {
     'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/auth',
-    '@nuxtjs/proxy',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: "http://127.0.0.1:8000/",
-    credentials: true,
-    proxy: true,
-  },
-
-  auth: {
-    redirect: {
-      login: '/login',
-      logout: '/',
-      callback: false,
-      home: '/',
-    },
-    strategies: {
-      local: {
-        endpoints: {
-          login: {url: '/api/auth/login', method: 'post', porpertyName: false},
-          user: {url: '/api/user', method: 'get', propetyName: false},
-          logout: false
-        },
-        tokenRequired: false,
-        tokenType: false,
-      }
-    },
-    localStorage: false,
-  },
-  router: {
-    middleware:['auth']
+    baseURL: '',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

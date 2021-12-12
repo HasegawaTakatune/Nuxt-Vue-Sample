@@ -21,6 +21,8 @@ return [
 
     'allowed_origins' => ['http://localhost:3000'],
 
+    'access_allow_methods' => ['GET', 'POST', 'PUT', 'DELETE', 'HEAD', 'OPTIONS'],
+
     'allowed_origins_patterns' => [],
 
     'allowed_headers' => ['*'],

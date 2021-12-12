@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NuxtController;
+use App\Http\Controllers\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::post('/login', [LoginController::class, 'login']);
+Route::get('/nuxt/{path?}', [NuxtController::class, 'nuxt'])->where('path', '.*')->name('nuxt');
+Route::post('/nuxt/{path?}', [NuxtController::class, 'nuxt'])->where('path', '.*');
+
+Route::get('/', [IndexController::class, 'index'])->name('index');
